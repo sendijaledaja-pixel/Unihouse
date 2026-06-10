@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><title>Icon Generator</title></head>
+<body>
+<canvas id="c192" width="192" height="192"></canvas>
+<canvas id="c512" width="512" height="512"></canvas>
+<script>
+function drawIcon(canvas) {
+  const ctx = canvas.getContext('2d');
+  const s = canvas.width;
+  // Background
+  ctx.fillStyle = '#1a1a2e';
+  ctx.beginPath();
+  ctx.roundRect(0, 0, s, s, s * 0.2);
+  ctx.fill();
+  // Building
+  ctx.fillStyle = '#4a6fa5';
+  const u = s / 12;
+  // Left building
+  ctx.fillRect(u, u*5, u*3, u*7);
+  // Middle building (tall)
+  ctx.fillRect(u*4.5, u*2, u*3, u*10);
+  // Right building
+  ctx.fillRect(u*8, u*4, u*3, u*8);
+  // Windows
+  ctx.fillStyle = '#f5c842';
+  [[1.3,5.5],[2.5,5.5],[1.3,7.2],[2.5,7.2],[1.3,8.9],[2.5,8.9],
+   [5,2.8],[6.2,2.8],[5,4.5],[6.2,4.5],[5,6.2],[6.2,6.2],[5,7.9],[6.2,7.9],
+   [8.3,4.8],[9.5,4.8],[8.3,6.5],[9.5,6.5],[8.3,8.2],[9.5,8.2]
+  ].forEach(([x,y]) => ctx.fillRect(x*u, y*u, u*0.7, u*0.7));
+  // UH text
+  ctx.fillStyle = '#ffffff';
+  ctx.font = `bold ${s*0.12}px Inter,sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.fillText('UH', s/2, s*0.97);
+}
+const c192 = document.getElementById('c192');
+const c512 = document.getElementById('c512');
+drawIcon(c192); drawIcon(c512);
+</script>
+</body>
+</html>
