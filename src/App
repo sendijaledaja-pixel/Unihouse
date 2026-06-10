@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 // ── Storage ──────────────────────────────────────────────────────────────────
 function load(k, fb) { try { const r = localStorage.getItem(k); return r ? JSON.parse(r) : fb; } catch { return fb; } }
@@ -164,11 +164,6 @@ function isEvening() {
   return new Date().getHours() >= EVENING_HOUR;
 }
 
-function addDays(dateStr, n) {
-  const d = new Date(dateStr + "T12:00:00");
-  d.setDate(d.getDate() + n);
-  return d.toISOString().slice(0, 10);
-}
 
 // ════════════════════════════════════════════════════════════════════════════
 // HOME TAB — animated hero + today/tomorrow summary
